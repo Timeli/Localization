@@ -12,8 +12,8 @@ public class LocalizationSystem
 
     public static Language language = Language.English;
 
-    private static Dictionary<string, string> localisesEN;
-    private static Dictionary<string, string> localisesRU;
+    private static Dictionary<string, string> localisedEN;
+    private static Dictionary<string, string> localisedRU;
 
     public static bool isInit;
 
@@ -24,6 +24,27 @@ public class LocalizationSystem
 
         localisedEN = csvLoader.GetDictionaryValues("en");
         localisedRU = csvLoader.GetDictionaryValues("ru");
+
+        isInit = true;
     }
 
+    public static string GetLocalisedValue(string key)
+    {
+        if (isInit == false)
+            Init();
+
+        string value = key;
+
+        switch (language)
+        {
+            case Language.English:
+                localisedEN.TryGetValue(key, out value);
+                break;
+            case Language.Russian:
+                localisedRU.TryGetValue(key,out value);
+                break;
+        }
+        
+        return value;
+    }
 }
