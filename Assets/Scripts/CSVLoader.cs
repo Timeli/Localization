@@ -67,7 +67,7 @@ public class CSVLoader
     public void Add(string key, string value)
     {
         string appended = string.Format("\n\"{0}\",\"{1}\",\"\"", key, value);
-        File.AppendAllText("Assets/Resoursces/loclisation.csv", appended);
+        File.AppendAllText("Assets/Resources/localization.csv", appended);
 
         UnityEditor.AssetDatabase.Refresh();
     }
@@ -99,7 +99,7 @@ public class CSVLoader
             newLines = lines.Where(w => w != lines[index]).ToArray();
 
             string replaced = string.Join(_lineSeparator.ToString(), newLines);
-            File.WriteAllText("Assets/Resoursces/loclisation.csv", replaced);
+            File.WriteAllText("Assets/Resources/localization.csv", replaced);
         }
     }
 

@@ -40,6 +40,13 @@ public class LocalizationSystem
         _localisedRU = csvLoader.GetDictionaryValues("ru");
     }
 
+    public static Dictionary<string, string> GetDictionaryForEditor()
+    {
+        if (isInit == false)
+            Init();
+        return _localisedEN;
+    }
+
     //Получаем значение по ключу и выбранному языку
     public static string GetLocalisedValue(string key)
     {
